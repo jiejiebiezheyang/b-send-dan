@@ -1,0 +1,23 @@
+{
+  "name": "b-send-dan",
+  "version": "1.0.0",
+  "description": "bilibili 弹幕自动发送(油猴脚本)",
+  "keywords": [
+    "bilibili"
+  ],
+  "license": "MIT",
+  "author": "jiejiebiezheyang",
+  "type": "module",
+  "main": "./dist/main.js",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "start": "node dist/main.js",
+    "dev": "tsc && node dist/main.js",
+    "clean": "rm -rf dist",
+    "clean-win": "powershell -Command \"Remove-Item -Path 'dist' -Recurse -Force\""
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
+}
