@@ -8,16 +8,16 @@
   "license": "MIT",
   "author": "jiejiebiezheyang",
   "type": "module",
-  "main": "./dist/main.js",
+  "main": "./dist/output/main.js",
   "scripts": {
+    "start": "node dist/output/main.js",
     "build": "tsc",
     "watch": "tsc --watch",
-    "start": "node dist/main.js",
-    "dev": "tsc && node dist/main.js",
-    "clean": "rm -rf dist",
-    "clean-win": "powershell -Command \"Remove-Item -Path 'dist' -Recurse -Force\""
+    "obfuscate": "tsc && javascript-obfuscator dist/output --output dist --config ./obfuscate.config.json",
+    "clean": "node -e \"require('fs').rmSync('dist', { recursive: true, force: true })\""
   },
   "devDependencies": {
+    "javascript-obfuscator": "^5.1.0",
     "typescript": "^5.9.3"
   }
 }
