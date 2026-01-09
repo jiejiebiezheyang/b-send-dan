@@ -4,7 +4,7 @@
 // @author 人间百般事哪个最清闲
 // @copyright 人间百般事哪个最清闲
 // @version 1.0.1
-// @description B站直播间自动发送弹幕
+// @description B站直播间自动定时发送弹幕.支持多条轮播.可拖拽面板
 // @grant GM_addStyle
 // @grant GM_addElement
 // @include https://live.bilibili.com/*
