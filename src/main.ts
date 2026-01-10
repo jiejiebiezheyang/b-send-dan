@@ -16,7 +16,7 @@
 // ==/UserScript==
 
 ;(function () {
-  ;('use strict')
+  'use strict'
 
   console.log('B站直播间弹幕发送:脚本启动')
 
@@ -56,7 +56,7 @@
     control.style.height = '150px'
     control.style.zIndex = '9999999'
     control.style.borderRadius = '10px'
-    control.style.boxShadow = '0 0 10px rgba(173, 216, 230, 0.8)'
+    control.style.boxShadow = '0 0 10px 4px rgba(64, 158, 255, 0.7)'
     control.style.margin = '0'
     control.style.padding = '0'
     control.style.borderRadius = '6px'
@@ -66,6 +66,7 @@
     title = document.createElement('p') as HTMLParagraphElement
     title.innerText = '弹幕发送'
     title.style.backgroundColor = '#dfdfdf'
+    title.style.backgroundColor = '#409EFF'
     title.style.color = '#000000'
     title.style.fontWeight = '600'
     title.style.alignContent = 'center'
@@ -75,7 +76,7 @@
     title.style.padding = '0'
     title.style.paddingLeft = '8px'
     title.style.borderRadius = '6px 6px 0 0'
-    title.style.boxShadow = '0 0 10px rgba(173, 216, 230, 0.8)'
+    title.style.boxShadow = '0 0 10px 4px rgba(64, 158, 255, 0.7)'
     title.style.cursor = 'grab'
     control.appendChild(title)
     // title鼠标按下
@@ -104,8 +105,9 @@
     control.appendChild(count)
     // 输入框
     input = document.createElement('input')
+    input.disabled = true
     input.placeholder = '请输入要发送内容,多条用 ; 隔开'
-    input.value = '1;2;3;4;5'
+    input.value = '正在初始化,请稍后...'
     input.style.width = 'calc(100% - 24px)'
     input.style.height = '24px'
     input.style.padding = '0'
@@ -127,9 +129,12 @@
     control.appendChild(input)
     // 发送按钮
     btn = document.createElement('button')
+    btn.disabled = true
+    btn.style.cursor = 'not-allowed'
+    btn.style.pointerEvents = 'none'
     btn.innerText = '发送'
     btn.style.margin = '4px 0 0 8px'
-    btn.style.backgroundColor = '#409EFF'
+    btn.style.backgroundColor = '#efefef'
     btn.style.borderRadius = '5px'
     btn.style.outline = 'none'
     btn.style.border = 'none'
@@ -243,6 +248,9 @@
     document.removeEventListener('mousemove', onMouseMove)
     document.removeEventListener('mouseup', onMouseUp)
   }
+
+  // 面板init
+  init()
   let checkExist = setTimeout(() => {
     chatInput = document.querySelector('textarea.chat-input.border-box')!
     sendButton = document.querySelector(
@@ -250,8 +258,18 @@
     )!
     if (chatInput && sendButton) {
       console.log('✔️ 找到输入框和发送按钮！')
+      // 输入框和发送按钮启用
+      input.value = '初始化成功'
+      let enableBtn = setTimeout(() => {
+        input.value = '1;2;3;4;5'
+        input.disabled = false
+        btn.style.cursor = 'default'
+        btn.style.pointerEvents = 'auto'
+        btn.style.backgroundColor = '#409EFF'
+        btn.disabled = false
+        clearTimeout(enableBtn)
+      }, 2000)
       clearTimeout(checkExist) // 找到后停止轮询
-      init()
     } else {
       console.log('❌ 未找到找输入框和按钮...')
     }
