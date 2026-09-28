@@ -17,7 +17,7 @@
     "clean": "node -e \"require('fs').rmSync('dist', { recursive: true, force: true })\""
   },
   "devDependencies": {
-    "javascript-obfuscator": "^5.1.0",
-    "typescript": "^5.9.3"
+    "javascript-obfuscator": "^5.8.0",
+    "typescript": "^6.0.3"
   }
 }
