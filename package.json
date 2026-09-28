@@ -8,16 +8,16 @@
   "license": "MIT",
   "author": "jiejiebiezheyang",
   "type": "module",
-  "main": "./dist/output/main.js",
+  "main": "./dist/main.js",
   "scripts": {
-    "start": "node dist/output/main.js",
+    "start": "node dist/main.js",
     "build": "tsc",
     "watch": "tsc --watch",
-    "obfuscate": "tsc && javascript-obfuscator dist/output --output dist --config ./obfuscate.config.json",
+    "obfuscate": "tsc && javascript-obfuscator dist --output dist/obf --config ./obfuscate.config.json",
     "clean": "node -e \"require('fs').rmSync('dist', { recursive: true, force: true })\""
   },
   "devDependencies": {
     "javascript-obfuscator": "^5.8.0",
-    "typescript": "^6.0.3"
+    "typescript": "^7.0.2"
   }
 }
